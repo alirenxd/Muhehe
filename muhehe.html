@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffebef;
+            margin: 0;
+            padding: 50px;
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            position: relative;
+            text-align: center;
+            z-index: 2;
+        }
+        .gif-container {
+            width: 250px;
+            height: auto;
+            margin: 20px auto 0;
+            background-color: #ffebef;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+            color: #ff4d4d;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.5s ease;
+        }
+        .yes {
+            background-color: #28a745;
+            color: white;
+        }
+        .no {
+            background-color: #dc3545;
+            color: white;
+        }
+        .success-message {
+            display: none;
+            text-align: center;
+        }
+        .success-message img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Will you be my Valentine Kamiliuk? 💖</h1>
+        <button class="yes" onclick="sayYes()">Yes</button>
+        <button class="no" onclick="askAgain()">No</button>
+    </div>
+
+    <div class="gif-container">
+        <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWgwYWgxN25leGhzeHRjMHo3c3k5NGFmY3Q3cXlqM3VhOXkxaGZyZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3ohhwnx9iiNmKrrua4/giphy.gif" alt="Cute GIF" width="100%">
+    </div>
+
+    <div class="success-message">
+        <h1>Yayyyy! ❤️ ❤️ ❤️ Imma kiss you! ❤️ ❤️ ❤️ </h1>
+		<img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWNxcGFzZW9vNnp5MWhjanQ2aHUzdWQ5dmM3OWhtaWZwcG0wN3M2byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT39CQIcoWQXQ5peco/giphy.gif" alt="Kissing Gif">
+    </div>
+
+    <script>
+        let noClickCount = 0;
+        let yesButton = document.querySelector('.yes');
+        let noButton = document.querySelector('.no');
+        let successMessage = document.querySelector('.success-message');
+        let gifContainer = document.querySelector('.gif-container');
+        
+        function sayYes() {
+            // Hide the original content (question and buttons)
+            document.querySelector('.container').style.display = 'none';
+            // Hide the original GIF
+            gifContainer.style.display = 'none';
+            // Show the success message with the new GIF
+            successMessage.style.display = 'block';
+        }
+
+        function askAgain() {
+            if (noClickCount === 0) {
+                noButton.innerText = "Woooow rimtai😒?!";
+            } else if (noClickCount === 1) {
+                noButton.innerText = "Nu šitas neveikia😝";
+            } else if (noClickCount === 2) {
+                yesButton.style.fontSize = '100px';
+                noButton.style.display = 'none';
+            }
+
+            noClickCount++;
+            yesButton.style.fontSize = (18 + noClickCount * 5) + 'px';
+        }
+    </script>
+</body>
+</html>
